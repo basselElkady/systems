@@ -1,0 +1,80 @@
+package com.example.systems.Controller;
+
+import com.example.systems.Dto.ListToResponseWith.InvoicesList;
+import com.example.systems.Dto.RequestDto.InvoiceDto;
+import com.example.systems.Dto.Specifications.SpecificationInvoice;
+import com.example.systems.Services.InvoicesService;
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.ByteArrayInputStream;
+
+@RestController
+@RequestMapping("bluenile/api/v1/invoice")
+@AllArgsConstructor
+@CrossOrigin(origins = "*")
+
+public class InvoiceController {
+
+    private final InvoicesService invoiceService;
+
+    @PostMapping
+    public ResponseEntity<Boolean> newInvoice(@RequestBody InvoiceDto invoiceDto) {
+        boolean save = invoiceService.save(invoiceDto);
+        return ResponseEntity.ok(save);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Boolean> delete(@RequestParam @NonNull Long id) {
+        boolean delete = invoiceService.delete(id);
+        return ResponseEntity.ok(delete);
+    }
+
+    @PutMapping
+    public ResponseEntity<Boolean> update(@RequestBody InvoiceDto invoiceDto,@RequestParam Long id) {
+        boolean update = invoiceService.update(invoiceDto,id);
+        return ResponseEntity.ok(update);
+    }
+
+    @PostMapping("/search")  // this is for search but i foreced to use post method
+    public ResponseEntity<InvoicesList> findAll(
+            @RequestParam(defaultValue = "0") int page,
+        //    @RequestParam(defaultValue = "10") int size,
+            @RequestBody SpecificationInvoice specificationInvoice
+    ) {
+        InvoicesList findAll = invoiceService.findAll(page, 20, specificationInvoice);
+        return ResponseEntity.ok(findAll);
+    }
+
+//    @GetMapping("/generate-pdf")
+//    public ResponseEntity<InputStreamResource> generatePdfWithTable(
+//            @RequestBody SpecificationInvoice specificationInvoice
+//    ) {
+//        // Replace with your actual object or list
+//
+//        InvoicesList invoicesList = invoiceService.findAll(specificationInvoice);
+//        ByteArrayInputStream pdfStream = invoiceService.generatePdfWithTable(invoicesList);
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("Content-Disposition", "inline; filename=table.pdf");
+//        //headers.add("Content-Type", "application/pdf");
+//
+//        return  ResponseEntity.ok()
+//                .headers(headers)
+//                .contentType(MediaType.APPLICATION_PDF)
+//                .body(new InputStreamResource(pdfStream));
+//    }
+
+
+
+
+
+
+
+}

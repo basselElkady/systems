@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies</title>
+    <link rel="stylesheet" href="style/invoices.css">
+</head>
+<body>
+<header>
+    <h1>فــواتـيـر</h1>
+</header>
+
+
+<!-- Buttons Container -->
+<!-- Invoices Section Button -->
+<div class="buttons-container" id="buttons-container">
+    <button class="primary-button" onclick="showCreateInvoiceForm()">فاتوره جديده</button>
+    <button class="primary-button" onclick="showGetInvoiceForm()">البحث فى الفواتير</button>
+</div>
+
+<!-- Create New Invoice Form -->
+<!-- Create New Invoice Form -->
+<div class="container create-invoice-form" id="create-invoice-form" style="display: none;">
+    <input type="number" id="invoice-price" placeholder="ادخل سعر الفاتوره" />
+    <input type="number" id="invoice-quantity" placeholder="الكميه فى الفاتوره" />
+    <input type="number" id="invoice-taxes" placeholder="الضريبه فى الفاتوره" />
+    <input type="text" id="invoice-product-name" placeholder="اسم المنتج" />
+    <input type="text" id="invoice-category" placeholder="تصنيف الفاتوره" />
+    <input type="text" id="invoice-company-from" placeholder="مــن شــركــة" />
+    <input type="text" id="invoice-company-to" placeholder="الــى شركــة" />
+    <button class="primary-button" onclick="createInvoice()">اضـافـة الفـاتـوره</button>
+    <button class="secondary-button" onclick="goBack()">الـرجـوع</button>
+</div>
+
+
+
+<!-- Get Invoice Form -->
+<div class="container get-invoice-form" id="get-invoice-form" style="display: none;">
+    <h3>املاء للبحث</h3>
+    <input type="date" id="from-date" placeholder="Start Date" />
+    <input type="date" id="to-date" placeholder="End Date" />
+    <input type="number" id="invoicePrice" placeholder="السـعـر" />
+    <input type="number" id="invoiceQuantity" placeholder="كـمـيـه" />
+    <input type="number" id="invoiceTaxes" placeholder="الضريبه فى الفاتوره" />
+    <input type="number" id="invoiceTotal" placeholder="مبلغ الفاتوره الكلى" />
+    <input type="text" id="product-name" placeholder="اسم المنتج" />
+    <input type="text" id="category" placeholder="التصنيف" />
+    <input type="text" id="company-to-name" placeholder="الى الشركه" />
+    <input type="text" id="company-from-name" placeholder="من الشركه" />
+    <button class="primary-button" onclick="searchInvoices()">ابــحــث</button>
+    <button class="secondary-button" onclick="goBack()">الـرجـوع</button>
+</div>
+
+
+
+<!-- Display Invoices -->
+<!-- Invoice Results -->
+<div id="invoice-results" style="display: none;">
+    <h3>الفواتير</h3>
+    <table id="invoice-results-table">
+        <thead>
+        <tr>
+<!--            <th>ID</th>-->
+            <th>التاريخ</th>
+            <th>اسم المنتج</th>
+            <th>تصنيف المنتج</th>
+            <th>من شركة</th>
+            <th>الى شركة</th>
+            <th>السعر</th>
+            <th>الكميه</th>
+            <th>الضريبه</th>
+            <th>المبلغ الكلى</th>
+        </tr>
+        </thead>
+        <tbody id="invoice-results-body">
+        <!-- Results will be dynamically inserted -->
+        </tbody>
+    </table>
+    <button class="primary-button" id="next-button"  onclick="fetchNextPage()">Next</button>
+
+
+    <button class="primary-button" onclick="goBack()">Back</button>
+
+
+    <button class="primary-button"  id="download-pdf" onclick="generatePDF()">تحميل فى هيئة ملف</button>
+
+</div>
+
+
+<!-- Update Invoice Form -->
+<div class="container" id="update-invoice-form" style="display: none;">
+    <h3>تعديل فاتوره</h3>
+    <input type="text" id="update-product-name" placeholder="اسم المنتج" />
+    <input type="text" id="update-category" placeholder="تصنيف" />
+    <input type="text" id="update-company-from" placeholder="من شركة" />
+    <input type="text" id="update-company-to" placeholder="الى شركة" />
+    <input type="number" id="update-price" placeholder="السعر" />
+    <input type="number" id="update-quantity" placeholder="الكميه" />
+    <input type="number" id="update-taxes" placeholder="الضرائب" />
+    <button class="success-button" onclick="submitInvoiceUpdate()">تعديل الفاتوره</button>
+    <button class="danger-button" onclick="cancelUpdate()">الغاء</button>
+</div>
+
+
+
+
+
+<script src="JS/invoices.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-invoice-template@latest/dist/jspdf-invoice-template.min.js"></script>
+
+</body>
+</html>

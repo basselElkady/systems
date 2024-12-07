@@ -1,0 +1,19 @@
+package com.example.systems.Mapper;
+
+import com.example.systems.Dto.RequestDto.NasryatDto;
+import com.example.systems.Entity.Nasryat;
+
+import java.time.LocalDate;
+
+public class NasryatMapper {
+
+    public static Nasryat NasryatDtoToNasryat(NasryatDto nasryatDto) {
+        Nasryat nasryat = new Nasryat();
+        nasryat.setName(nasryatDto.name());
+        nasryat.setCategory(nasryatDto.category());
+        nasryat.setPrice(nasryatDto.price());
+        nasryat.setDate(LocalDate.now());
+        return nasryat;
+    }
+
+}

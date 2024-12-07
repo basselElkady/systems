@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies</title>
+    <link rel="stylesheet" href="style/invoices.css">
+</head>
+<body>
+<header>
+    <h1>الـشــركــات</h1>
+</header>
+
+<!-- Buttons Container -->
+<div class="buttons-container" id="buttons-container">
+    <button class="primary-button" onclick="showAddCompanyForm()">اضافة شركه جديده</button>
+    <button class="primary-button" onclick="showGetCompanyForm()">الاطلاع على حسابات شركه معينه</button>
+    <button class="primary-button" onclick="showDeleteCompanyForm()">مسح شركه</button>
+    <button class="primary-button" onclick="showUpdateCompanyForm()">التعديل فى اسم او رصيد شركه</button>
+</div>
+
+<!-- Add New Company Form (Hidden by Default) -->
+<div class="container add-company-form" id="add-company-form" style="display: none;">
+    <input type="text" id="company-name" placeholder="ادخل اسم الشركه" />
+    <button class="primary-button" onclick="createCompany()">حــفــظ</button>
+    <button class="secondary-button" onclick="goBack()">الرجوع</button>
+</div>
+
+
+
+<div class="container get-company-form" id="get-company-form" style="display: none;">
+    <input type="text" id="search-company-name" placeholder="ادخل اسم الشركه" />
+    <button class="primary-button" onclick="getCompany()">ابحث عن الشركه</button>
+    <button class="secondary-button" onclick="goBack()">الرجوع</button>
+</div>
+
+<!-- Display Company Info -->
+<div class="container" id="company-info" style="display: none;">
+    <table>
+        <thead>
+        <tr>
+            <th>اسم الشركه</th>
+            <th>الرصيد</th>
+        </tr>
+        </thead>
+        <tbody id="company-info-body">
+        <!-- Data will be populated dynamically -->
+        </tbody>
+    </table>
+    <div id="pagination-container">
+        <button class="secondary-button" onclick="goBack()">العوده</button>
+        <button class="primary-button" onclick="fetchCompanyDetails()">عرض تفاصيل</button>
+    </div>
+
+</div>
+
+
+<div class="containerTable company-details-container" id="company-details-container" style="display:none;">
+    <table border="1">
+<!--    <table>-->
+        <thead>
+        <tr>
+            <th>التاريخ</th>
+            <th>اسم الشركه</th>
+            <th>تصنيف</th>
+            <th>المبلغ</th>
+            <th>المبلغ الكلى</th>
+        </tr>
+        </thead>
+        <tbody id="company-details-body">
+        <!-- Rows will be added dynamically here -->
+        </tbody>
+    </table>
+    <div >
+        <button class="primary-button" id="next-button" onclick="fetchNextPage()">Next</button>
+        <button class="secondary-button" onclick="goBack()">Back</button>
+    </div>
+    </div>
+
+
+<!-- Delete Company Form -->
+<div class="container delete-company-form" id="delete-company-form" style="display: none;">
+    <input type="text" id="delete-company-name" placeholder="ادخل اسم الشركه المراد مسحها" />
+    <button class="primary-button" onclick="deleteCompany()">امسح الشركه</button>
+    <button class="secondary-button" onclick="goBack()">رجوع</button>
+</div>
+
+
+<!-- Update Company Form -->
+<div class="update-company-form" id="update-company-form" style="display: none;">
+    <input type="text" id="update-company-name" placeholder="ادخل اسم الشركه" />
+    <input type="number" id="update-company-moneyLena" placeholder="ادخل رصيد" />
+
+    <input type="text" id="update-company-category" placeholder="ادخل التصنيف" />
+
+
+    <button class="primary-button" onclick="updateCompany()">تعديل</button>
+    <button class="secondary-button" onclick="goBack()">رجوع</button>
+</div>
+
+
+<script src="JS/companies.js"></script>
+</body>
+</html>

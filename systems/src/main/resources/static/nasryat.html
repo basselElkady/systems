@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies</title>
+    <link rel="stylesheet" href="style/invoices.css">
+</head>
+<body>
+    <header>
+        <h1>الـنـثـريــات</h1>
+    </header>
+
+    <div class="buttons-container" id="buttons-container">
+        <button class="primary-button" onclick="showNewNasryatForm()">اضافة نثريه جديده</button>
+        <button class="primary-button" onclick="showGetInvoiceForm()">ابحث فى النثريات</button>
+        <button class="primary-button" id="get-sum-button" onclick="getSumOfMonth()">حساب النثريات فى هذا الشهر</button>
+        <button class="primary-button" onclick="goToDashboard()">الذهاب إلى الرئيسية</button>
+
+    </div>
+
+
+    <div id="sum-container" style="display: none;">
+        <p id="sum-result"></p>
+        <button class="secondary-button" id="back-button" onclick="goBack()" style="margin-top: 10px;">Back</button>
+    </div>
+
+
+    <!-- New Nasryat Form -->
+    <div class="container" id="new-nasryat-form" style="display: none;">
+        <input type="text" id="nasryat-name" placeholder="اسم المنتج" />
+        <input type="text" id="nasryat-category" placeholder="اى تصنيف" />
+        <input type="number" id="nasryat-price" placeholder="ادخل سعر المنتج" />
+        <div>
+            <button class="primary-button" onclick="createNasryat()">حفظ المنتج</button>
+            <button class="secondary-button" onclick="cancelNasryat()">الـغـاء</button>
+        </div>
+    </div>
+
+    <!-- Get Nasryat Form -->
+    <div class="container" id="get-nasryat-form" style="display: none;">
+        <h3>بــحــث عــن مــنـتــج</h3>
+        <input type="number" id="specification-id" placeholder="ID (optional)" />
+        <input type="date" id="specification-from-date" placeholder="من تــاريــخ" />
+        <input type="date" id="specification-to-date" placeholder="الى تــاريــخ" />
+        <input type="text" id="specification-name" placeholder="اسم المنتج الذى تبحث عنه" />
+        <input type="text" id="specification-category" placeholder="تصنيف المنتج" />
+        <input type="number" id="specification-price" placeholder="السعر الذى تبحث عنه" />
+        <button class="primary-button" onclick="getNasryat()">بــحــث</button>
+        <button class="secondary-button" onclick="cancelNasryat()">الــغـاء</button>
+    </div>
+
+
+    <div id="nasryat-results" style="display: none;">
+        <h3>Search Results</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>التاريخ</th>
+                <th>الاسم</th>
+                <th>التصنيف</th>
+                <th>السعر</th>
+            </tr>
+            </thead>
+            <tbody id="nasryat-results-body">
+            <!-- Results will be dynamically inserted -->
+            </tbody>
+        </table>
+
+        <button class="primary-button" id="next-button"  onclick="fetchNextPage()">Next</button>
+
+
+        <button class="primary-button" onclick="goBack()">الـرجـوع</button>
+    </div>
+
+
+
+    <div class="container" id="update-nasryat-form" style="display: none;">
+        <h3>Update Nasryat</h3>
+        <input type="hidden" id="update-id" />
+        <input type="text" id="update-name" placeholder="Name" />
+        <input type="text" id="update-category" placeholder="Category" />
+        <input type="number" id="update-price" placeholder="Price" />
+        <button onclick="updateNasryat()">Update</button>
+        <button onclick="cancelUpdate()">Cancel</button>
+    </div>
+
+
+
+
+
+
+    <script src="JS/nasryat.js"></script>
+
+</body>
+</html>

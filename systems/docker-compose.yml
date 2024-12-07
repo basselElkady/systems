@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  systemapp:
+    image: basselahmed3414723/systems:s2 # Replace with your app's image
+    container_name: systemapp
+    depends_on:
+      - systemdb # Ensure the database starts before the app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://systemdb:3306/systemdb # Use the correct database service name
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080" # Maps port 8080 of the container to port 8080 on your host
+
+  systemdb:
+    image: mysql:8.0 # MySQL Docker image
+    container_name: systemdb
+    environment:
+      MYSQL_ROOT_PASSWORD: root # MySQL requires this environment variable
+      MYSQL_DATABASE: systemdb # Initialize with your database name
+    ports:
+      - "3307:3306" # Maps port 3306 of the container to port 3306 on your host

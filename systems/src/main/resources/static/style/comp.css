@@ -1,0 +1,221 @@
+
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+/* Header Styling */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Buttons Container Styling */
+.buttons-container {
+    margin-top: 30px;
+}
+
+.buttons-container button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buttons-container button:hover {
+    background-color: #3d8b3d;
+}
+
+/* Form Containers Styling */
+.add-company-form,
+.get-company-form,
+.delete-company-form,
+.update-company-form,
+#company-info {
+    display: none;
+    margin: 40px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    background-color: #fff;
+    border: 2px solid #0073e6;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Fields Styling */
+.add-company-form input,
+.get-company-form input,
+.delete-company-form input,
+.update-company-form input {
+       width: 90%; /* Adjust width to fit nicely within the container */
+       padding: 10px; /* Space inside the input */
+       font-size: 16px; /* Ensure text is readable */
+       margin-bottom: 15px; /* Space below each input */
+       border: 1px solid #ccc; /* Light border for definition */
+       border-radius: 5px; /* Rounded corners */
+       outline: none; /* Remove default focus outline */
+       transition: border-color 0.3s ease; /* Smooth transition on focus */
+       box-sizing: border-box; /* Include padding and border in width */
+       text-align: center; /* Center text inside the input */
+}
+
+.add-company-form input:focus,
+.get-company-form input:focus,
+.delete-company-form input:focus,
+.update-company-form input:focus {
+    border-color: #0073e6;
+    box-shadow: 0px 0px 5px rgba(0, 115, 230, 0.5);
+}
+
+/* Buttons in Forms */
+.add-company-form button,
+.get-company-form button,
+.delete-company-form button,
+.update-company-form button,
+#company-info button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #0073e6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-company-form button:hover,
+.get-company-form button:hover,
+.delete-company-form button:hover,
+.update-company-form button:hover,
+#company-info button:hover {
+    background-color: #005bb5;
+    transform: translateY(-2px);
+}
+
+.add-company-form button:active,
+.get-company-form button:active,
+.delete-company-form button:active,
+.update-company-form button:active,
+#company-info button:active {
+    background-color: #003f87;
+    transform: translateY(1px);
+}
+
+/* Back Button Styling */
+.add-company-form button:nth-child(2),
+.get-company-form button:nth-child(2),
+.delete-company-form button:nth-child(2),
+.update-company-form button:nth-child(2),
+#company-info button:nth-child(2) {
+    background-color: #ccc;
+    color: #333;
+}
+
+.add-company-form button:nth-child(2):hover,
+.get-company-form button:nth-child(2):hover,
+.delete-company-form button:nth-child(2):hover,
+.update-company-form button:nth-child(2):hover,
+#company-info button:nth-child(2):hover {
+    background-color: #999;
+}
+
+/* Table Styling */
+#company-info table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#company-info table th,
+#company-info table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+#company-info table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#company-info table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#company-info table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .add-company-form,
+    .get-company-form,
+    .delete-company-form,
+    .update-company-form,
+    #company-info {
+        width: 95%;
+        padding: 15px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+
+
+#company-details-container {
+    margin: 20px auto;
+    width: 80%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: center;
+}
+
+table thead {
+    background-color: #007bff;
+    color: white;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: #e6f7ff;
+}
